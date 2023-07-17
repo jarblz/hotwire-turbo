@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "ruby.rubocop.onSave": true,
+  "ruby.format": "rubocop",
+
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+  },
+
+
+  "files.associations": {
+    "*.html.erb": "erb",
+  },
+
+}
