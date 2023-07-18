@@ -7,9 +7,17 @@
 <div class="task-form">
   <%= render "form", task: @task %>
 </div>
-<div class='tasks' id="tasks">
+<div class='tasks'>
   <h1>Tasks</h1>
+  <%= form_with(url: tasks_path, method: "GET", data: {turbo_frame: 'tasks', turbo_action: 'advance', controller: 'tasks'}) do |form| %>
+    <%= form.label :query, "Filter:" %>
+    <%= form.text_field :query, 
+      class: "inline-block w-96 px-3 py-2 mt-2 shadow rounded-md border border-gray-200 outline-none",
+      data: { action: "input->tasks#search"}
+    %>
+    <%= form.submit 'Search', class: 'btn py-2 ml-2 bg-blue-600 text-white', style: 'display:none;' %>
+  <% end %>
   <div class="px-5" data-controller="tasks">
-    <%= render @tasks %>
+    <%= render 'tasks', tasks: @tasks %>
   </div>
 </div>

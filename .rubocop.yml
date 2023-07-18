@@ -3,3 +3,7 @@ AllCops:
 Style/FrozenStringLiteralComment:
   Enabled: true
   SafeAutoCorrect: true
+Style/ConditionalAssignment:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 30

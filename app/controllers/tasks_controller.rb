@@ -3,8 +3,17 @@
 # some controller
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
     @task = Task.new
+    if params[:query].present?
+      @tasks = Task.where('description LIKE ?', "%#{params[:query]}%")
+    else
+      @tasks = Task.all
+    end
+    if turbo_frame_request?
+      render partial: 'tasks', locals: { tasks: @tasks }
+    else
+      render :index
+    end
   end
 
   def create
