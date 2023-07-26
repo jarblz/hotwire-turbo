@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-  </head>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV[''] %>&libraries=places&callback=initMap" async defer data-turbolinks-eval="false"></script>  </head>
   <body>
     <main>
       <%= yield %>
