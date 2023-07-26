@@ -5,8 +5,10 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV['POSTGRES_HOST'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   port: 5432
 
+# local development
 development:
   <<: *default
   database: hotwire_development

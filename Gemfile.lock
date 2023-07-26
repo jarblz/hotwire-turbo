@@ -87,6 +87,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.5.2)
+      rails
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -136,6 +138,8 @@ GEM
     nokogiri (1.15.3-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.15.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.3)
     public_suffix (5.0.3)
@@ -209,11 +213,14 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.3-aarch64-linux)
     sqlite3 (1.6.3-arm64-darwin)
+    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-aarch64-linux)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.30-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
     tilt (2.2.0)
@@ -244,11 +251,13 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   capybara
   debug
+  dockerfile-rails (>= 1.5)
   dotenv-rails
   importmap-rails
   jbuilder
