@@ -1,0 +1,33 @@
+<div class="map-container">
+  <div 
+    id="breweries"
+    data-latitude='43.057020'
+    data-longitude='-109.656970'
+  >
+    <h2>Breweries in wyoming</h2>
+    <ol>
+      <li
+          class="brewery-list-item"
+          data-latitude='43.050591'
+          data-longitude='-109.657828'
+        >
+        <h4>kewl</h4>
+        <p>wyoming</p>
+      </li>
+      <li
+          class="brewery-list-item"
+          data-latitude='43.051657'
+          data-longitude='-109.648086'
+        >
+        <h4>kewl</h4>
+        <p>wyoming</p>
+      </li>
+    </ol>
+  </div>
+  <div id="map"></div>
+</div>
+<%= javascript_import_module_tag 'map' %>
+<%= 
+    javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_JS_API_KEY']}&callback=initMap()",
+    defer: true
+%>
