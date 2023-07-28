@@ -11,6 +11,8 @@ Things you may want to cover:
 - if not using docker, go to the gemfile and un-comment the ruby version
 
 * Getting it running:
-1. docker build . -t rails_docker:1
+- This app should run via `bin/dev` (local rails server), or,
+- via docker: `docker-compose up --build`
+- you will need a .env file to get it off the ground.
 
 * ...

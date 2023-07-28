@@ -3,7 +3,7 @@ import { Loader } from '@googlemaps/js-api-loader'
 
 export default class extends Controller {
   apiKey(){
-    return document.querySelector("meta[name=gm_js_ak]").content
+    return document.head.querySelector("meta[name=gm_js_ak]").content
   }
 
   connect() {

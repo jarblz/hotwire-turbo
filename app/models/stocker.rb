@@ -1,0 +1,2 @@
+class Stocker < ApplicationRecord
+end

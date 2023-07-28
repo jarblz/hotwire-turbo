@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_stocked: 2023-07-28
+  species: MyString
+  quantity: 1
+  avg_length: 9.99
+  water_name: MyString
+  county: MyString
+  lonlat: MyString
+
+two:
+  date_stocked: 2023-07-28
+  species: MyString
+  quantity: 1
+  avg_length: 9.99
+  water_name: MyString
+  county: MyString
+  lonlat: MyString
