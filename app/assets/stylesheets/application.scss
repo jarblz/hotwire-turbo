@@ -27,6 +27,14 @@ main{
     margin: auto;
 }
 
+.form-control {
+    &.search-places {
+        border-radius: 12px;
+        display: table;
+        margin: auto;
+        width: 400px;
+    }
+}
 // turbo-frame {
 //     border: 1px solid lightblue;
 //     border-radius: 5px;

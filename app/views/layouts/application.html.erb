@@ -9,10 +9,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= tag :meta, name: :gm_js_ak, content: ENV['GOOGLE_MAPS_JS_API_KEY'] %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_JS_API_KEY']}&libraries=places&callback=initMap",
-                            async: true,
-                            defer: true,
-                            "data-turbolinks-eval": false %>
+    <script>
+      function initMap() {
+        console.log('fuckkkk')
+      }
+    </script>
   </head>
   <body>
     <main>

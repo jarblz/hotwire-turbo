@@ -9,10 +9,9 @@
       </ul>
     </div>
   <% end %>
-  <div class='mt-4' id='map' data-controller='stockers' data-stockers-target="map" style="height: 400px;">
-  </div>
   <div class="mb-5">
-    <%= form.label :address %>
-    <%= form.search_field :address, class: 'form-control', data: { 'stockers-target' => "field", action: "keydown->stockers#keydown" }%>
+    <%= form.search_field :address, class: 'form-control search-places', data: { 'stockers-target' => "field", action: "keydown->stockers#keydown" }%>
+  </div>
+  <div class='mt-4' id='map' data-stockers-target="map" style="height: 400px;">
   </div>
 <% end %>

@@ -49,8 +49,8 @@ export default class extends Controller {
   placeChanged() {
     console.log('changed')
     let place = this.autocomplete.getPlace()
-
-    mapElement = document.getElementById('map')
+    console.log('map-target', this.map)
+    let mapElement = this.map
 
     if (!place.geometry) {
       window.alert(`No details available for input: ${place.name}`)
@@ -59,7 +59,6 @@ export default class extends Controller {
     if (place.geometry.viewport) {
       debugger;
       mapElement.fitBounds(place.geometry.viewport)
-      mapElement.setBounds(place.geometry.viewport)
     } else {
       mapElement.setCenter(place.geometry.location)
       mapElement.setZoom(17)
