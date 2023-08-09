@@ -6,6 +6,8 @@ export default class extends Controller {
     return document.head.querySelector("meta[name=gm_js_ak]").content
   }
 
+  static targets = ["field", "map"]
+
   connect() {
     const loader = new Loader({
       apiKey: this.apiKey(),
@@ -24,18 +26,55 @@ export default class extends Controller {
     loader
       .load()
       .then((google) => {
-        new google.maps.Map(document.getElementById("map"), mapOptions);
+        console.log('loader')
+        console.log('field', this.fieldTarget)
+        this.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        this.autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
+        this.autocomplete.bindTo('bounds', this.map)
+        this.autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
+        this.autocomplete.addListener('place_changed', this.placeChanged.bind(this))
+    
+        this.marker = new google.maps.Marker({
+          map: this.map,
+          anchorPoint: new google.maps.Point(0, -29)
+        })
+    
       })
       .catch(e => {
         // do something
         console.log('fuggg', e)
       });
+  }
 
-    // // Load the Google Map
-    // console.log('stockerzz')
-    // this.map = new google.maps.Map(this.element, {
-    //   center: { lat: 37.7749, lng: -122.4194 }, // Set your initial map center
-    //   zoom: 12 // Set the initial zoom level
-    // });
+  placeChanged() {
+    console.log('changed')
+    let place = this.autocomplete.getPlace()
+
+    mapElement = document.getElementById('map')
+
+    if (!place.geometry) {
+      window.alert(`No details available for input: ${place.name}`)
+      return
+    }
+    if (place.geometry.viewport) {
+      debugger;
+      mapElement.fitBounds(place.geometry.viewport)
+      mapElement.setBounds(place.geometry.viewport)
+    } else {
+      mapElement.setCenter(place.geometry.location)
+      mapElement.setZoom(17)
+    }
+
+    this.marker.setPosition(place.geometry.location)
+    this.marker.setVisible(true)
+
+    // this.latitudeTarget.value = place.geometry.location.lat()
+    // this.longitudeTarget.value = place.geometry.location.lng()
+  }
+
+  keydown(event) {
+    if (event.key == "Enter") {
+      event.preventDefault()
+    }
   }
 }

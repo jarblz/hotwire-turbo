@@ -17,6 +17,16 @@ main{
     margin: auto;
 }
 
+#map {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    width: 530px;
+    display: table;
+    margin: auto;
+}
+
 // turbo-frame {
 //     border: 1px solid lightblue;
 //     border-radius: 5px;

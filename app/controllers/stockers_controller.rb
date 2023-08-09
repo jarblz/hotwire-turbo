@@ -3,6 +3,7 @@
 # some controller
 class StockersController < ApplicationController
   def index
+    @stocker = Stocker.new
     # @task = Task.new
     # if params[:query].present?
     #   @tasks = Task.where('description LIKE ?', "%#{params[:query]}%")

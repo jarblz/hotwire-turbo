@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'tasks#index'
   post 'tasks/:id/toggle', to: 'tasks#toggle'
   get 'stockers', to: 'stockers#index'
+  get 'maps', to: 'maps#index'
 
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,18 @@
+<%= form_with(model: [stocker], local: true, data: { controller: "stockers", action: "search", address: stocker.water_name }) do |form| %>
+  <% if stocker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stocker.errors.count, "error") %> prohibited this stocker from being saved:</h2>
+      <ul>
+        <% stop.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='mt-4' id='map' data-controller='stockers' data-stockers-target="map" style="height: 400px;">
+  </div>
+  <div class="mb-5">
+    <%= form.label :address %>
+    <%= form.search_field :address, class: 'form-control', data: { 'stockers-target' => "field", action: "keydown->stockers#keydown" }%>
+  </div>
+<% end %>
