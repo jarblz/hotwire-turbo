@@ -10,7 +10,6 @@ class CreateStockers < ActiveRecord::Migration[7.0]
       t.string :water_name
       t.string :county
       t.st_point :lonlat
-
       t.timestamps
     end
   end

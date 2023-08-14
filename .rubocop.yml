@@ -1,5 +1,6 @@
 AllCops:
   AutoCorrect: true
+  NewCops: enable
 Style/FrozenStringLiteralComment:
   Enabled: true
   SafeAutoCorrect: true
