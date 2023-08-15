@@ -6,7 +6,7 @@ export default class extends Controller {
     return document.head.querySelector("meta[name=gm_js_ak]").content
   }
 
-  static targets = ["field", "map"]
+  static targets = ["field", "map", "stockers"]
 
   connect() {
     const loader = new Loader({
@@ -17,10 +17,10 @@ export default class extends Controller {
 
     const mapOptions = {
       center: {
-        lat: 0,
-        lng: 0
+        lat: 43.0760,
+        lng: -107.290283
       },
-      zoom: 4
+      zoom: 8
     };
     console.log(this.apiKey())
     loader
@@ -34,10 +34,7 @@ export default class extends Controller {
         this.autocomplete.setFields(['address_components', 'geometry', 'icon', 'name'])
         this.autocomplete.addListener('place_changed', this.placeChanged.bind(this))
     
-        this.marker = new google.maps.Marker({
-          map: this.map,
-          anchorPoint: new google.maps.Point(0, -29)
-        })
+        this.addMarkers()
     
       })
       .catch(e => {
@@ -75,5 +72,51 @@ export default class extends Controller {
     if (event.key == "Enter") {
       event.preventDefault()
     }
+  }
+
+  addMarkers() {
+    Array.from(this.stockersTarget.children).forEach(stocker => {
+      const location =  {
+        lat: parseFloat(stocker.dataset.lat),
+        lng: parseFloat(stocker.dataset.lng)
+      };
+      this.marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+        title: "This is a marker",
+      })
+
+      const infowindow = new google.maps.InfoWindow({
+        content: this.markerLabel(stocker),
+        ariaLabel: "Uluru",
+      });
+      const marker = new google.maps.Marker({
+        position: location,
+        map: this.map,
+        title: "Stocked Fish",
+      });
+    
+      marker.addListener("click", () => {  
+        infowindow.open({
+          anchor: marker,
+          map: this.map,
+        });
+      });
+    });
+  }
+
+
+  markerLabel(stocker){
+    const content = '<div class="infoWindow">' +
+    `<h1 id="firstHeading" class="firstHeading">${stocker.dataset.name}</h1>` +
+    '<div id="bodyContent">' +
+      "<ul> " +
+      `<li><b>Date Stocked:</b> ${stocker.dataset.dateStocked}</li>` +
+      `<li><b>Species:</b> ${stocker.dataset.species}</li>` +
+      `<li><b>Quantity:</b> ${stocker.dataset.quantity}</li>` +
+      "</ul> " +
+    "</div>" +
+    "</div>";
+    return content
   }
 }

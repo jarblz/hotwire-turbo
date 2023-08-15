@@ -80,7 +80,10 @@ class StockerIngestionService
   end
 
   def point(result)
+    # todo: add this to a before_create/before_update hook to make sure geometries are always saved the same way
+    # add latitude/longitude floats so that we don't have to worry about differently named attributes
     return unless result
-    "POINT(#{result.data['lat']} #{result.data['lon']})"
+
+    RGeoService.point(result.data['lon'], result.data['lat'])
   end
 end

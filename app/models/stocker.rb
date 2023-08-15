@@ -30,4 +30,16 @@ class Stocker < ApplicationRecord
 
   enum verification_status: %i[unverified verified]
   enum verification_problem: %i[not_found state_mismatch]
+
+  def latitude
+    return 0 unless lonlat
+
+    lonlat.y
+  end
+
+  def longitude
+    return 0 unless lonlat
+
+    lonlat.x
+  end
 end

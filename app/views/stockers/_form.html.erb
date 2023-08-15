@@ -14,4 +14,16 @@
   </div>
   <div class='mt-4' id='map' data-stockers-target="map" style="height: 400px;">
   </div>
+  <ul class='display:none' data-stockers-target='stockers'>
+    <% stockers.each do |stocker| %>
+      <li 
+        data-name= "<%= stocker.water_name%>" 
+        data-date-stocked= "<%= stocker.date_stocked.strftime('%F') %>" 
+        data-species= "<%= stocker.species %>" 
+        data-quantity= "<%= stocker.quantity %>" 
+        data-lat= "<%= stocker.latitude %>" 
+        data-lng= "<%= stocker.longitude %>">
+      </li>
+    <% end %>
+  </ul>
 <% end %>
